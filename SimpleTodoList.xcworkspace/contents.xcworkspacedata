@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:SpmSwiftUITemplatePackage">
+      location = "group:SimpleTodoListPackage">
    </FileRef>
    <FileRef
-      location = "group:SpmSwiftUITemplate.xcodeproj">
+      location = "group:SimpleTodoList.xcodeproj">
    </FileRef>
 </Workspace>

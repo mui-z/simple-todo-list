@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		751B0CCC27D384710011BA70 /* SpmSwiftUITemplateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751B0CCB27D384710011BA70 /* SpmSwiftUITemplateApp.swift */; };
+		751B0CCC27D384710011BA70 /* SimpleTodoListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751B0CCB27D384710011BA70 /* SimpleTodoListApp.swift */; };
 		751B0CD027D384720011BA70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 751B0CCF27D384720011BA70 /* Assets.xcassets */; };
 		751B0CD327D384720011BA70 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 751B0CD227D384720011BA70 /* Preview Assets.xcassets */; };
-		751B0CDD27D384730011BA70 /* SpmSwiftUITemplateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751B0CDC27D384730011BA70 /* SpmSwiftUITemplateTests.swift */; };
-		751B0CE727D384730011BA70 /* SpmSwiftUITemplateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751B0CE627D384730011BA70 /* SpmSwiftUITemplateUITests.swift */; };
-		751B0CE927D384730011BA70 /* SpmSwiftUITemplateUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751B0CE827D384730011BA70 /* SpmSwiftUITemplateUITestsLaunchTests.swift */; };
-		751B0CF927D386660011BA70 /* SpmSwiftUITemplatePackage in Frameworks */ = {isa = PBXBuildFile; productRef = 751B0CF827D386660011BA70 /* SpmSwiftUITemplatePackage */; };
+		751B0CDD27D384730011BA70 /* SimpleTodoListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751B0CDC27D384730011BA70 /* SimpleTodoListTests.swift */; };
+		751B0CE727D384730011BA70 /* SimpleTodoListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751B0CE627D384730011BA70 /* SimpleTodoListUITests.swift */; };
+		751B0CE927D384730011BA70 /* SimpleTodoListUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751B0CE827D384730011BA70 /* SimpleTodoListUITestsLaunchTests.swift */; };
+		751B0CF927D386660011BA70 /* SimpleTodoListPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 751B0CF827D386660011BA70 /* SimpleTodoListPackage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -22,27 +22,27 @@
 			containerPortal = 751B0CC027D384710011BA70 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 751B0CC727D384710011BA70;
-			remoteInfo = SpmSwiftUITemplate;
+			remoteInfo = SimpleTodoList;
 		};
 		751B0CE327D384730011BA70 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 751B0CC027D384710011BA70 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 751B0CC727D384710011BA70;
-			remoteInfo = SpmSwiftUITemplate;
+			remoteInfo = SimpleTodoList;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		751B0CC827D384710011BA70 /* SpmSwiftUITemplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpmSwiftUITemplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		751B0CCB27D384710011BA70 /* SpmSwiftUITemplateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpmSwiftUITemplateApp.swift; sourceTree = "<group>"; };
+		751B0CC827D384710011BA70 /* SimpleTodoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleTodoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		751B0CCB27D384710011BA70 /* SimpleTodoListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTodoListApp.swift; sourceTree = "<group>"; };
 		751B0CCF27D384720011BA70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		751B0CD227D384720011BA70 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		751B0CD827D384730011BA70 /* SpmSwiftUITemplateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpmSwiftUITemplateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		751B0CDC27D384730011BA70 /* SpmSwiftUITemplateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpmSwiftUITemplateTests.swift; sourceTree = "<group>"; };
-		751B0CE227D384730011BA70 /* SpmSwiftUITemplateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpmSwiftUITemplateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		751B0CE627D384730011BA70 /* SpmSwiftUITemplateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpmSwiftUITemplateUITests.swift; sourceTree = "<group>"; };
-		751B0CE827D384730011BA70 /* SpmSwiftUITemplateUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpmSwiftUITemplateUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		751B0CD827D384730011BA70 /* SimpleTodoListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleTodoListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		751B0CDC27D384730011BA70 /* SimpleTodoListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTodoListTests.swift; sourceTree = "<group>"; };
+		751B0CE227D384730011BA70 /* SimpleTodoListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleTodoListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		751B0CE627D384730011BA70 /* SimpleTodoListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTodoListUITests.swift; sourceTree = "<group>"; };
+		751B0CE827D384730011BA70 /* SimpleTodoListUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTodoListUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		751B0CF627D3851A0011BA70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -51,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				751B0CF927D386660011BA70 /* SpmSwiftUITemplatePackage in Frameworks */,
+				751B0CF927D386660011BA70 /* SimpleTodoListPackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,9 +75,9 @@
 		751B0CBF27D384710011BA70 = {
 			isa = PBXGroup;
 			children = (
-				751B0CCA27D384710011BA70 /* SpmSwiftUITemplate */,
-				751B0CDB27D384730011BA70 /* SpmSwiftUITemplateTests */,
-				751B0CE527D384730011BA70 /* SpmSwiftUITemplateUITests */,
+				751B0CCA27D384710011BA70 /* SimpleTodoList */,
+				751B0CDB27D384730011BA70 /* SimpleTodoListTests */,
+				751B0CE527D384730011BA70 /* SimpleTodoListUITests */,
 				751B0CC927D384710011BA70 /* Products */,
 				751B0CF727D386660011BA70 /* Frameworks */,
 			);
@@ -86,22 +86,22 @@
 		751B0CC927D384710011BA70 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				751B0CC827D384710011BA70 /* SpmSwiftUITemplate.app */,
-				751B0CD827D384730011BA70 /* SpmSwiftUITemplateTests.xctest */,
-				751B0CE227D384730011BA70 /* SpmSwiftUITemplateUITests.xctest */,
+				751B0CC827D384710011BA70 /* SimpleTodoList.app */,
+				751B0CD827D384730011BA70 /* SimpleTodoListTests.xctest */,
+				751B0CE227D384730011BA70 /* SimpleTodoListUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		751B0CCA27D384710011BA70 /* SpmSwiftUITemplate */ = {
+		751B0CCA27D384710011BA70 /* SimpleTodoList */ = {
 			isa = PBXGroup;
 			children = (
 				751B0CF627D3851A0011BA70 /* Info.plist */,
-				751B0CCB27D384710011BA70 /* SpmSwiftUITemplateApp.swift */,
+				751B0CCB27D384710011BA70 /* SimpleTodoListApp.swift */,
 				751B0CCF27D384720011BA70 /* Assets.xcassets */,
 				751B0CD127D384720011BA70 /* Preview Content */,
 			);
-			path = SpmSwiftUITemplate;
+			path = SimpleTodoList;
 			sourceTree = "<group>";
 		};
 		751B0CD127D384720011BA70 /* Preview Content */ = {
@@ -112,21 +112,21 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		751B0CDB27D384730011BA70 /* SpmSwiftUITemplateTests */ = {
+		751B0CDB27D384730011BA70 /* SimpleTodoListTests */ = {
 			isa = PBXGroup;
 			children = (
-				751B0CDC27D384730011BA70 /* SpmSwiftUITemplateTests.swift */,
+				751B0CDC27D384730011BA70 /* SimpleTodoListTests.swift */,
 			);
-			path = SpmSwiftUITemplateTests;
+			path = SimpleTodoListTests;
 			sourceTree = "<group>";
 		};
-		751B0CE527D384730011BA70 /* SpmSwiftUITemplateUITests */ = {
+		751B0CE527D384730011BA70 /* SimpleTodoListUITests */ = {
 			isa = PBXGroup;
 			children = (
-				751B0CE627D384730011BA70 /* SpmSwiftUITemplateUITests.swift */,
-				751B0CE827D384730011BA70 /* SpmSwiftUITemplateUITestsLaunchTests.swift */,
+				751B0CE627D384730011BA70 /* SimpleTodoListUITests.swift */,
+				751B0CE827D384730011BA70 /* SimpleTodoListUITestsLaunchTests.swift */,
 			);
-			path = SpmSwiftUITemplateUITests;
+			path = SimpleTodoListUITests;
 			sourceTree = "<group>";
 		};
 		751B0CF727D386660011BA70 /* Frameworks */ = {
@@ -139,9 +139,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		751B0CC727D384710011BA70 /* SpmSwiftUITemplate */ = {
+		751B0CC727D384710011BA70 /* SimpleTodoList */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 751B0CEC27D384730011BA70 /* Build configuration list for PBXNativeTarget "SpmSwiftUITemplate" */;
+			buildConfigurationList = 751B0CEC27D384730011BA70 /* Build configuration list for PBXNativeTarget "SimpleTodoList" */;
 			buildPhases = (
 				751B0CC427D384710011BA70 /* Sources */,
 				751B0CC527D384710011BA70 /* Frameworks */,
@@ -151,17 +151,17 @@
 			);
 			dependencies = (
 			);
-			name = SpmSwiftUITemplate;
+			name = SimpleTodoList;
 			packageProductDependencies = (
-				751B0CF827D386660011BA70 /* SpmSwiftUITemplatePackage */,
+				751B0CF827D386660011BA70 /* SimpleTodoListPackage */,
 			);
-			productName = SpmSwiftUITemplate;
-			productReference = 751B0CC827D384710011BA70 /* SpmSwiftUITemplate.app */;
+			productName = SimpleTodoList;
+			productReference = 751B0CC827D384710011BA70 /* SimpleTodoList.app */;
 			productType = "com.apple.product-type.application";
 		};
-		751B0CD727D384730011BA70 /* SpmSwiftUITemplateTests */ = {
+		751B0CD727D384730011BA70 /* SimpleTodoListTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 751B0CEF27D384730011BA70 /* Build configuration list for PBXNativeTarget "SpmSwiftUITemplateTests" */;
+			buildConfigurationList = 751B0CEF27D384730011BA70 /* Build configuration list for PBXNativeTarget "SimpleTodoListTests" */;
 			buildPhases = (
 				751B0CD427D384730011BA70 /* Sources */,
 				751B0CD527D384730011BA70 /* Frameworks */,
@@ -172,14 +172,14 @@
 			dependencies = (
 				751B0CDA27D384730011BA70 /* PBXTargetDependency */,
 			);
-			name = SpmSwiftUITemplateTests;
-			productName = SpmSwiftUITemplateTests;
-			productReference = 751B0CD827D384730011BA70 /* SpmSwiftUITemplateTests.xctest */;
+			name = SimpleTodoListTests;
+			productName = SimpleTodoListTests;
+			productReference = 751B0CD827D384730011BA70 /* SimpleTodoListTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		751B0CE127D384730011BA70 /* SpmSwiftUITemplateUITests */ = {
+		751B0CE127D384730011BA70 /* SimpleTodoListUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 751B0CF227D384730011BA70 /* Build configuration list for PBXNativeTarget "SpmSwiftUITemplateUITests" */;
+			buildConfigurationList = 751B0CF227D384730011BA70 /* Build configuration list for PBXNativeTarget "SimpleTodoListUITests" */;
 			buildPhases = (
 				751B0CDE27D384730011BA70 /* Sources */,
 				751B0CDF27D384730011BA70 /* Frameworks */,
@@ -190,9 +190,9 @@
 			dependencies = (
 				751B0CE427D384730011BA70 /* PBXTargetDependency */,
 			);
-			name = SpmSwiftUITemplateUITests;
-			productName = SpmSwiftUITemplateUITests;
-			productReference = 751B0CE227D384730011BA70 /* SpmSwiftUITemplateUITests.xctest */;
+			name = SimpleTodoListUITests;
+			productName = SimpleTodoListUITests;
+			productReference = 751B0CE227D384730011BA70 /* SimpleTodoListUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -218,7 +218,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 751B0CC327D384710011BA70 /* Build configuration list for PBXProject "SpmSwiftUITemplate" */;
+			buildConfigurationList = 751B0CC327D384710011BA70 /* Build configuration list for PBXProject "SimpleTodoList" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -231,9 +231,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				751B0CC727D384710011BA70 /* SpmSwiftUITemplate */,
-				751B0CD727D384730011BA70 /* SpmSwiftUITemplateTests */,
-				751B0CE127D384730011BA70 /* SpmSwiftUITemplateUITests */,
+				751B0CC727D384710011BA70 /* SimpleTodoList */,
+				751B0CD727D384730011BA70 /* SimpleTodoListTests */,
+				751B0CE127D384730011BA70 /* SimpleTodoListUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -269,7 +269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				751B0CCC27D384710011BA70 /* SpmSwiftUITemplateApp.swift in Sources */,
+				751B0CCC27D384710011BA70 /* SimpleTodoListApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				751B0CDD27D384730011BA70 /* SpmSwiftUITemplateTests.swift in Sources */,
+				751B0CDD27D384730011BA70 /* SimpleTodoListTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,8 +285,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				751B0CE727D384730011BA70 /* SpmSwiftUITemplateUITests.swift in Sources */,
-				751B0CE927D384730011BA70 /* SpmSwiftUITemplateUITestsLaunchTests.swift in Sources */,
+				751B0CE727D384730011BA70 /* SimpleTodoListUITests.swift in Sources */,
+				751B0CE927D384730011BA70 /* SimpleTodoListUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,12 +295,12 @@
 /* Begin PBXTargetDependency section */
 		751B0CDA27D384730011BA70 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 751B0CC727D384710011BA70 /* SpmSwiftUITemplate */;
+			target = 751B0CC727D384710011BA70 /* SimpleTodoList */;
 			targetProxy = 751B0CD927D384730011BA70 /* PBXContainerItemProxy */;
 		};
 		751B0CE427D384730011BA70 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 751B0CC727D384710011BA70 /* SpmSwiftUITemplate */;
+			target = 751B0CC727D384710011BA70 /* SimpleTodoList */;
 			targetProxy = 751B0CE327D384730011BA70 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -429,11 +429,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SpmSwiftUITemplate/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"SimpleTodoList/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SpmSwiftUITemplate/Info.plist;
+				INFOPLIST_FILE = SimpleTodoList/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -460,11 +460,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SpmSwiftUITemplate/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"SimpleTodoList/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SpmSwiftUITemplate/Info.plist;
+				INFOPLIST_FILE = SimpleTodoList/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -499,12 +499,12 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = studio.sekai.SpmSwiftUITemplateTests;
+				PRODUCT_BUNDLE_IDENTIFIER = studio.sekai.SimpleTodoListTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpmSwiftUITemplate.app/SpmSwiftUITemplate";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleTodoList.app/SimpleTodoList";
 			};
 			name = Debug;
 		};
@@ -523,12 +523,12 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = studio.sekai.SpmSwiftUITemplateTests;
+				PRODUCT_BUNDLE_IDENTIFIER = studio.sekai.SimpleTodoListTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpmSwiftUITemplate.app/SpmSwiftUITemplate";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleTodoList.app/SimpleTodoList";
 			};
 			name = Release;
 		};
@@ -545,12 +545,12 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = studio.sekai.SpmSwiftUITemplateUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = studio.sekai.SimpleTodoListUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SpmSwiftUITemplate;
+				TEST_TARGET_NAME = SimpleTodoList;
 			};
 			name = Debug;
 		};
@@ -567,19 +567,19 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = studio.sekai.SpmSwiftUITemplateUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = studio.sekai.SimpleTodoListUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SpmSwiftUITemplate;
+				TEST_TARGET_NAME = SimpleTodoList;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		751B0CC327D384710011BA70 /* Build configuration list for PBXProject "SpmSwiftUITemplate" */ = {
+		751B0CC327D384710011BA70 /* Build configuration list for PBXProject "SimpleTodoList" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				751B0CEA27D384730011BA70 /* Debug */,
@@ -588,7 +588,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		751B0CEC27D384730011BA70 /* Build configuration list for PBXNativeTarget "SpmSwiftUITemplate" */ = {
+		751B0CEC27D384730011BA70 /* Build configuration list for PBXNativeTarget "SimpleTodoList" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				751B0CED27D384730011BA70 /* Debug */,
@@ -597,7 +597,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		751B0CEF27D384730011BA70 /* Build configuration list for PBXNativeTarget "SpmSwiftUITemplateTests" */ = {
+		751B0CEF27D384730011BA70 /* Build configuration list for PBXNativeTarget "SimpleTodoListTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				751B0CF027D384730011BA70 /* Debug */,
@@ -606,7 +606,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		751B0CF227D384730011BA70 /* Build configuration list for PBXNativeTarget "SpmSwiftUITemplateUITests" */ = {
+		751B0CF227D384730011BA70 /* Build configuration list for PBXNativeTarget "SimpleTodoListUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				751B0CF327D384730011BA70 /* Debug */,
@@ -618,9 +618,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		751B0CF827D386660011BA70 /* SpmSwiftUITemplatePackage */ = {
+		751B0CF827D386660011BA70 /* SimpleTodoListPackage */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = SpmSwiftUITemplatePackage;
+			productName = SimpleTodoListPackage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

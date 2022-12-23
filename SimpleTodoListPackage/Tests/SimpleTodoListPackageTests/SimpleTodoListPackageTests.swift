@@ -1,11 +1,11 @@
 import XCTest
-@testable import SpmSwiftUITemplatePackage
+@testable import SimpleTodoListPackage
 
-final class SpmSwiftUITemplatePackageTests: XCTestCase {
+final class SimpleTodoListPackageTests: XCTestCase {
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        XCTAssertEqual(SpmSwiftUITemplatePackage().text, "Hello, World!")
+        XCTAssertEqual(SimpleTodoListPackage().text, "Hello, World!")
     }
 }
