@@ -40,41 +40,6 @@ final class TodoListTest: XCTestCase {
 		XCTAssertNil(viewModel.output.modalModel)
 		XCTAssertFalse(viewModel.binding.isShownModal)
 	}
-	
-	func testOnAppear() {
-		let mockRepository = TodoRepositoryProtocolMock()
-		let viewModel = TodoListViewModel(repository: mockRepository)
-		let expectation = expectation(description: "on appear test")
-		
-		let listedTodo = [Todo(title: "list")]
-		let doneListTodo = [Todo(title: "done", isDone: true)]
-		
-		expectation.expectedFulfillmentCount = 2
-		
-		mockRepository.getAllHandler = {
-			return listedTodo + doneListTodo
-		}
-		
-		viewModel.output.todoList
-			.first()
-			.sink { _ in
-				XCTAssertEqual(viewModel.output.todoList.value, [])
-				expectation.fulfill()
-			}
-			.store(in: &cancellables)
-		
-		viewModel.output.todoList
-			.dropFirst()
-			.sink { _ in
-				XCTAssertEqual(viewModel.output.todoList.value, listedTodo)
-				expectation.fulfill()
-			}
-			.store(in: &cancellables)
-		
-		viewModel.input.onAppear.send(())
-		
-		waitForExpectations(timeout: 1)
-	}
 
 	func testSelectListSegment() {
 		let mockRepository = TodoRepositoryProtocolMock()
@@ -114,6 +79,12 @@ final class TodoListTest: XCTestCase {
 			}
 			.store(in: &cancellables)
 		
-		waitForExpectations(timeout: 1)
+		waitForExpectations(timeout: 1) { error in
+			if error == nil {
+				XCTAssertEqual(mockRepository.getAllCallCount, 3)
+			} else {
+				XCTFail()
+			}
+		}
 	}
 }
