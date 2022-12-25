@@ -10,9 +10,8 @@ import XCTest
 
 // MARK: Test
 final class TodoListTest: XCTestCase {
-
 	func testDidTapTodo() {
-		let viewModel = TodoListViewModel()
+		let viewModel = TodoListViewModel(repository: TodoRepositoryProtocolMock())
 
 		let todo = Todo(title: "todo")
 
@@ -26,7 +25,7 @@ final class TodoListTest: XCTestCase {
 	}
 
 	func testDidCloseButton() {
-		let viewModel = TodoListViewModel()
+		let viewModel = TodoListViewModel(repository: TodoRepositoryProtocolMock())
 
 		let todo = Todo(title: "todo")
 
@@ -43,20 +42,51 @@ final class TodoListTest: XCTestCase {
 	}
 	
 	func testOnAppear() {
-		let viewModel = TodoListViewModel()
+		let viewModel = TodoListViewModel(repository: TodoRepositoryProtocolMock())
 		
 		viewModel.input.onAppear.send(())
 		
-		XCTAssertEqual(viewModel.todoList, [])
+//		XCTAssertEqual(viewModel.todoList, [])
 	}
 
 	func testSelectListSegment() {
-		let viewModel = TodoListViewModel()
-
+		let mockRepository = TodoRepositoryProtocolMock()
+		let expectation = expectation(description: "selected list segment")
+		let viewModel = TodoListViewModel(repository: mockRepository)
+		let listedTodo = [Todo(title: "list")]
+		let doneListTodo = [Todo(title: "done", isDone: true)]
+		
+		expectation.expectedFulfillmentCount = 2
+		
+		mockRepository.getAllHandler = {
+			return listedTodo + doneListTodo
+		}
+		
 		XCTAssertEqual(viewModel.binding.selectedTodoState, .list)
+		XCTAssertEqual(viewModel.output.todoList.value, [])
 
 		viewModel.binding.selectedTodoState = .done
+		
+		viewModel.output.todoList
+			.first()
+			.sink { _ in
+				XCTAssertEqual(viewModel.binding.selectedTodoState, .done)
+				XCTAssertEqual(viewModel.output.todoList.value, doneListTodo)
+				expectation.fulfill()
+			}
+			.store(in: &cancellables)
 
-		XCTAssertEqual(viewModel.binding.selectedTodoState, .done)
+		viewModel.binding.selectedTodoState = .list
+		
+		viewModel.output.todoList
+			.first()
+			.sink { _ in
+				XCTAssertEqual(viewModel.binding.selectedTodoState, .list)
+				XCTAssertEqual(viewModel.output.todoList.value, listedTodo)
+				expectation.fulfill()
+			}
+			.store(in: &cancellables)
+		
+		waitForExpectations(timeout: 1)
 	}
 }

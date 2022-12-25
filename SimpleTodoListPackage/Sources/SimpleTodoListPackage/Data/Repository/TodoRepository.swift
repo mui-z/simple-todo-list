@@ -8,7 +8,16 @@
 import Foundation
 import RealmSwift
 
-struct TodoRepository {
+/// @mockable
+protocol TodoRepositoryProtocol {
+	func create(todo: Todo)
+	func getById(id: String) -> Todo
+	func getAll() -> [Todo]
+	func update(todo: Todo)
+	func delete(todo: Todo)
+}
+
+final class TodoRepository: TodoRepositoryProtocol {
 	func create(todo: Todo) {
 		let realm = try! Realm()
 		try! realm.write {

@@ -16,17 +16,18 @@ final class TodoListViewModel: NSObject, ObservableObject, Storable {
 	let output: Output
 	@ObservedObject var binding: Binding
 	
-	let repository: TodoRepository = .init()
-	var todoList: [Todo] = []
+	let repository: TodoRepositoryProtocol
 	
 	init(
 		input: Input = .init(),
 		output: Output = .init(),
-		binding: Binding = .init()
+		binding: Binding = .init(),
+		repository: TodoRepositoryProtocol = TodoRepository()
 	) {
 		self.input = input
 		self.output = output
 		self.binding = binding
+		self.repository = repository
 		super.init()
 		bind(input: input, output: output, binding: binding)
 	}
@@ -84,9 +85,7 @@ private extension TodoListViewModel {
 		
 		input.onAppear
 			.sink { [unowned self] _ in
-				let fetchedTodoList = repository.getAll()
-				todoList = fetchedTodoList
-				let filteredTodoList = todoList.filter { todo in
+				let filteredTodoList = repository.getAll().filter { todo in
 					switch binding.selectedTodoState {
 					case .list:
 						return todo.isDone == false
@@ -113,15 +112,17 @@ private extension TodoListViewModel {
 			.store(in: &cancellables)
 		
 		binding.$selectedTodoState
-			.sink { selectedState in
-				// TODO: Get From Repository
-				let displayList: [Todo] = []
-//				switch selectedState {
-//				case .list:
-//				case .done:
-//				}
+			.sink { [unowned self] selectedState in
+				let filteredTodoList = repository.getAll().filter { todo in
+					switch selectedState {
+					case .list:
+						return !todo.isDone
+					case .done:
+						return todo.isDone
+					}
+				}
 				
-				output.todoList.send(displayList)
+				output.todoList.send(filteredTodoList)
 			}
 			.store(in: &cancellables)
 	}
