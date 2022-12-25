@@ -10,7 +10,6 @@
 		751B0CCC27D384710011BA70 /* SimpleTodoListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751B0CCB27D384710011BA70 /* SimpleTodoListApp.swift */; };
 		751B0CD027D384720011BA70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 751B0CCF27D384720011BA70 /* Assets.xcassets */; };
 		751B0CD327D384720011BA70 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 751B0CD227D384720011BA70 /* Preview Assets.xcassets */; };
-		751B0CDD27D384730011BA70 /* SimpleTodoListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751B0CDC27D384730011BA70 /* SimpleTodoListTests.swift */; };
 		751B0CE727D384730011BA70 /* SimpleTodoListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751B0CE627D384730011BA70 /* SimpleTodoListUITests.swift */; };
 		751B0CE927D384730011BA70 /* SimpleTodoListUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751B0CE827D384730011BA70 /* SimpleTodoListUITestsLaunchTests.swift */; };
 		751B0CF927D386660011BA70 /* SimpleTodoListPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 751B0CF827D386660011BA70 /* SimpleTodoListPackage */; };
@@ -39,7 +38,6 @@
 		751B0CCF27D384720011BA70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		751B0CD227D384720011BA70 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		751B0CD827D384730011BA70 /* SimpleTodoListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleTodoListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		751B0CDC27D384730011BA70 /* SimpleTodoListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTodoListTests.swift; sourceTree = "<group>"; };
 		751B0CE227D384730011BA70 /* SimpleTodoListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleTodoListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		751B0CE627D384730011BA70 /* SimpleTodoListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTodoListUITests.swift; sourceTree = "<group>"; };
 		751B0CE827D384730011BA70 /* SimpleTodoListUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTodoListUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -115,7 +113,6 @@
 		751B0CDB27D384730011BA70 /* SimpleTodoListTests */ = {
 			isa = PBXGroup;
 			children = (
-				751B0CDC27D384730011BA70 /* SimpleTodoListTests.swift */,
 			);
 			path = SimpleTodoListTests;
 			sourceTree = "<group>";
@@ -277,7 +274,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				751B0CDD27D384730011BA70 /* SimpleTodoListTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
