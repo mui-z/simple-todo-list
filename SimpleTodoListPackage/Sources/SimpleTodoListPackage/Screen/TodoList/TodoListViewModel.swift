@@ -96,6 +96,7 @@ private extension TodoListViewModel {
 		
 		binding.$selectedTodoState
 			.sink { [unowned self] selectedState in
+				// FIXME: To use cache. High load if you access the persistence layer every time
 				let filteredTodoList = repository.getAll().filter { filterTodoList(todo: $0, selectedState: selectedState) }
 				output.todoList.send(filteredTodoList)
 			}

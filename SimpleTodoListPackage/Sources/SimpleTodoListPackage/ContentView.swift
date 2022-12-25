@@ -16,7 +16,16 @@ public struct ContentView: View {
 	}
 
     public var body: some View {
-		TodoListView(viewModel: .init(), environment: .init())
+		NavigationStack {
+			TodoListView(viewModel: .init(), environment: .init())
+			.toolbar {
+				Button {
+					print("add button pressed!")
+				} label: {
+					Image(systemName: "plus")
+				}
+			}
+		}
     }
 }
 

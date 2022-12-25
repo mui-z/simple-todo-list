@@ -14,7 +14,7 @@ struct TodoListView: View {
 	var body: some View {
 		VStack {
 			Spacer()
-				.frame(height: 40.0)
+				.frame(height: 20.0)
 			
 			Picker(selection: $viewModel.binding.selectedTodoState, label: Text("Picker")) {
 				Text("Todo").tag(SelectedState.list)
