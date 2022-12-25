@@ -85,14 +85,7 @@ private extension TodoListViewModel {
 		
 		input.onAppear
 			.sink { [unowned self] _ in
-				let filteredTodoList = repository.getAll().filter { todo in
-					switch binding.selectedTodoState {
-					case .list:
-						return todo.isDone == false
-					case .done:
-						return todo.isDone == true
-					}
-				}
+				let filteredTodoList = repository.getAll().filter { filterTodoList(todo: $0, selectedState: binding.selectedTodoState) }
 				output.todoList.send(filteredTodoList)
 			}
 			.store(in: &cancellables)
@@ -113,18 +106,19 @@ private extension TodoListViewModel {
 		
 		binding.$selectedTodoState
 			.sink { [unowned self] selectedState in
-				let filteredTodoList = repository.getAll().filter { todo in
-					switch selectedState {
-					case .list:
-						return !todo.isDone
-					case .done:
-						return todo.isDone
-					}
-				}
-				
+				let filteredTodoList = repository.getAll().filter { filterTodoList(todo: $0, selectedState: selectedState) }
 				output.todoList.send(filteredTodoList)
 			}
 			.store(in: &cancellables)
+	}
+	
+	private func filterTodoList(todo: Todo, selectedState: SelectedState) -> Bool {
+		switch selectedState {
+		case .list:
+			return !todo.isDone
+		case .done:
+			return todo.isDone
+		}
 	}
 }
 
