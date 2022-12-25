@@ -16,7 +16,7 @@ struct TodoRepository {
 		}
 	}
 	
-	func getTodo(id: String) -> Todo {
+	func getById(id: String) -> Todo {
 		let realm = try! Realm()
 		return realm.object(ofType: TodoData.self, forPrimaryKey: id)!.toEntity()
 	}

@@ -41,6 +41,14 @@ final class TodoListTest: XCTestCase {
 		XCTAssertNil(viewModel.output.modalModel)
 		XCTAssertFalse(viewModel.binding.isShownModal)
 	}
+	
+	func testOnAppear() {
+		let viewModel = TodoListViewModel()
+		
+		viewModel.input.onAppear.send(())
+		
+		XCTAssertEqual(viewModel.todoList, [])
+	}
 
 	func testSelectListSegment() {
 		let viewModel = TodoListViewModel()

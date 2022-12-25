@@ -16,6 +16,9 @@ final class TodoListViewModel: NSObject, ObservableObject, Storable {
 	let output: Output
 	@ObservedObject var binding: Binding
 	
+	let repository: TodoRepository = .init()
+	var todoList: [Todo] = []
+	
 	init(
 		input: Input = .init(),
 		output: Output = .init(),
@@ -33,10 +36,16 @@ final class TodoListViewModel: NSObject, ObservableObject, Storable {
 extension TodoListViewModel {
 	
 	final class Input {
+		let onAppear: PassthroughSubject<Void, Never>
 		let didTapTodo: PassthroughSubject<Todo, Never>
 		let didCloseModal: PassthroughSubject<Void, Never>
 		
-		init(didTapTodo: PassthroughSubject<Todo, Never> = .init(), didCloseModal: PassthroughSubject<Void, Never> = .init()) {
+		init(
+			onAppear: PassthroughSubject<Void, Never> = .init(),
+			didTapTodo: PassthroughSubject<Todo, Never> = .init(),
+			didCloseModal: PassthroughSubject<Void, Never> = .init()
+		) {
+			self.onAppear = onAppear
 			self.didTapTodo = didTapTodo
 			self.didCloseModal = didCloseModal
 		}
@@ -70,6 +79,22 @@ private extension TodoListViewModel {
 		binding.objectWillChange
 			.sink { [weak self] _ in
 				self?.objectWillChange.send()
+			}
+			.store(in: &cancellables)
+		
+		input.onAppear
+			.sink { [unowned self] _ in
+				let fetchedTodoList = repository.getAll()
+				todoList = fetchedTodoList
+				let filteredTodoList = todoList.filter { todo in
+					switch binding.selectedTodoState {
+					case .list:
+						return todo.isDone == false
+					case .done:
+						return todo.isDone == true
+					}
+				}
+				output.todoList.send(filteredTodoList)
 			}
 			.store(in: &cancellables)
 		

@@ -27,7 +27,7 @@ let package = Package(
             dependencies: [
 				"HeliumLogger",
 				"CombineStorable",
-				.product(name: "RealmSwift", package: "realm-swift")
+				.product(name: "RealmSwift", package: "realm-swift"),
 			]),
         .testTarget(
             name: "SimpleTodoListPackageTests",
