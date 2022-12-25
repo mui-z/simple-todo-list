@@ -42,11 +42,38 @@ final class TodoListTest: XCTestCase {
 	}
 	
 	func testOnAppear() {
-		let viewModel = TodoListViewModel(repository: TodoRepositoryProtocolMock())
+		let mockRepository = TodoRepositoryProtocolMock()
+		let viewModel = TodoListViewModel(repository: mockRepository)
+		let expectation = expectation(description: "on appear test")
+		
+		let listedTodo = [Todo(title: "list")]
+		let doneListTodo = [Todo(title: "done", isDone: true)]
+		
+		expectation.expectedFulfillmentCount = 2
+		
+		mockRepository.getAllHandler = {
+			return listedTodo + doneListTodo
+		}
+		
+		viewModel.output.todoList
+			.first()
+			.sink { _ in
+				XCTAssertEqual(viewModel.output.todoList.value, [])
+				expectation.fulfill()
+			}
+			.store(in: &cancellables)
+		
+		viewModel.output.todoList
+			.dropFirst()
+			.sink { _ in
+				XCTAssertEqual(viewModel.output.todoList.value, listedTodo)
+				expectation.fulfill()
+			}
+			.store(in: &cancellables)
 		
 		viewModel.input.onAppear.send(())
 		
-//		XCTAssertEqual(viewModel.todoList, [])
+		waitForExpectations(timeout: 1)
 	}
 
 	func testSelectListSegment() {
