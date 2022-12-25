@@ -8,12 +8,19 @@
 import Foundation
 
 struct Todo: Equatable, Identifiable {
-	let id = UUID()
-	let name: String
+	let id: String
+	let title: String
 	let isDone: Bool
 
-	init(name: String, isDone: Bool = false) {
-		self.name = name
+	init(title: String, isDone: Bool = false) {
+		self.id = UUID().uuidString
+		self.title = title
+		self.isDone = isDone
+	}
+	
+	init(id: String, title: String, isDone: Bool) {
+		self.id = id
+		self.title = title
 		self.isDone = isDone
 	}
 }

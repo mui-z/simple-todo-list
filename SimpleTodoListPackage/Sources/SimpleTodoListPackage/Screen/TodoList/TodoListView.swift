@@ -8,25 +8,22 @@
 import SwiftUI
 
 struct TodoListView: View {
+	@ObservedObject var viewModel: TodoListViewModel
+	let environment: TodoListEnvironemnt
+	
 	var body: some View {
 		VStack {
-			Picker(selection: .constant(1), label: Text("Picker")) {
-				Text("Todo").tag(1)
-				Text("Done").tag(2)
-
+			Picker(selection: $viewModel.binding.selectedTodoState, label: Text("Picker")) {
+				Text("Todo").tag(SelectedState.list)
+				Text("Done").tag(SelectedState.done)
 			}
 			.pickerStyle(.segmented)
 
 			List {
-				Text("A List Item")
-				Text("A List Item")
-					.onTapGesture {
-						print(UUID().uuidString)
-					}
-				Text("A third a")
-
+				ForEach(viewModel.output.todoList.value, id: \.id) { todo in
+					Text(todo.title)
+				}
 			}
-
 		}
 		.padding()
 
@@ -35,6 +32,6 @@ struct TodoListView: View {
 
 struct TodoListView_Previews: PreviewProvider {
 	static var previews: some View {
-		TodoListView()
+		TodoListView(viewModel: .init(), environment: .init())
 	}
 }

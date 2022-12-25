@@ -14,7 +14,7 @@ final class TodoListTest: XCTestCase {
 	func testDidTapTodo() {
 		let viewModel = TodoListViewModel()
 
-		let todo = Todo(name: "todo")
+		let todo = Todo(title: "todo")
 
 		XCTAssertNil(viewModel.output.modalModel)
 		XCTAssertFalse(viewModel.binding.isShownModal)
@@ -28,7 +28,7 @@ final class TodoListTest: XCTestCase {
 	func testDidCloseButton() {
 		let viewModel = TodoListViewModel()
 
-		let todo = Todo(name: "todo")
+		let todo = Todo(title: "todo")
 
 		viewModel.output.modalModel = todo
 		viewModel.binding.isShownModal = true
