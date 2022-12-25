@@ -12,8 +12,13 @@ final class TodoData: Object, ObjectKeyIdentifiable {
 	@Persisted(primaryKey: true) var id: String
 	@Persisted var title: String
 	@Persisted var isDone: Bool
-	init(id: String, title: String, isDone: Bool) {
+	
+	override init() {
 		super.init()
+	}
+	
+	convenience init(id: String, title: String, isDone: Bool) {
+		self.init()
 		self.id = id
 		self.title = title
 		self.isDone = isDone

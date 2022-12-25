@@ -13,20 +13,29 @@ struct TodoListView: View {
 	
 	var body: some View {
 		VStack {
+			Spacer()
+				.frame(height: 40.0)
+			
 			Picker(selection: $viewModel.binding.selectedTodoState, label: Text("Picker")) {
 				Text("Todo").tag(SelectedState.list)
 				Text("Done").tag(SelectedState.done)
 			}
 			.pickerStyle(.segmented)
-
-			List {
-				ForEach(viewModel.output.todoList.value, id: \.id) { todo in
-					Text(todo.title)
+			
+			if (viewModel.output.todoList.value.isEmpty) {
+				Spacer()
+				Text("Nothing Todo!")
+				Spacer()
+			} else {
+				List {
+					ForEach(viewModel.output.todoList.value, id: \.id) { todo in
+						Text(todo.title)
+					}
 				}
 			}
 		}
 		.padding()
-
+		
 	}
 }
 
