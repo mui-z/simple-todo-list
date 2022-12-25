@@ -15,7 +15,7 @@ final class TodoListViewModel: NSObject, ObservableObject, Storable {
 	let input: Input
 	let output: Output
 	@ObservedObject var binding: Binding
-	
+
 	init(
 		input: Input = .init(),
 		output: Output = .init(),
@@ -31,29 +31,29 @@ final class TodoListViewModel: NSObject, ObservableObject, Storable {
 
 // MARK: - Property
 extension TodoListViewModel {
-	
+
 	final class Input {
 		let didTapTodo: PassthroughSubject<Todo, Never>
 		let didCloseModal: PassthroughSubject<Void, Never>
-		
+
 		init(didTapTodo: PassthroughSubject<Todo, Never> = .init(), didCloseModal: PassthroughSubject<Void, Never> = .init()) {
 			self.didTapTodo = didTapTodo
 			self.didCloseModal = didCloseModal
 		}
 	}
-	
+
 	final class Output: ObservableObject {
 		var modalModel: Todo?
 		let dismissView: PassthroughSubject<Void, Never>
-		
+
 		init(modalModel: Todo? = nil, dismissView: PassthroughSubject<Void, Never> = .init()) {
 			self.modalModel = modalModel
 			self.dismissView = dismissView
 		}
 	}
-	
+
 	final class Binding: ObservableObject {
-		@State var selectedTodoState: [SelectedState] = [.list]
+		@Published var selectedTodoState: SelectedState = .list
 		@Published var isShownModal = false
 	}
 }
@@ -66,14 +66,14 @@ private extension TodoListViewModel {
 				self?.objectWillChange.send()
 			}
 			.store(in: &cancellables)
-		
+
 		input.didTapTodo
 			.sink { todo in
 				binding.isShownModal = true
 				output.modalModel = todo
 			}
 			.store(in: &cancellables)
-		
+
 		input.didCloseModal
 			.sink {
 				binding.isShownModal = false
@@ -82,7 +82,6 @@ private extension TodoListViewModel {
 			.store(in: &cancellables)
 	}
 }
-
 
 enum SelectedState {
 	case list

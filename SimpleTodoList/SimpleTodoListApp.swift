@@ -8,7 +8,6 @@
 import SwiftUI
 import SimpleTodoListPackage
 
-
 @main
 struct SimpleTodoListApp: App {
 	@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
@@ -20,7 +19,7 @@ struct SimpleTodoListApp: App {
 }
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
-	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
 
 		return true
 	}

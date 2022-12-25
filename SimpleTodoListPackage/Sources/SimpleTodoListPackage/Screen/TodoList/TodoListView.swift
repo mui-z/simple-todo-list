@@ -13,10 +13,10 @@ struct TodoListView: View {
 			Picker(selection: .constant(1), label: Text("Picker")) {
 				Text("Todo").tag(1)
 				Text("Done").tag(2)
-				
+
 			}
 			.pickerStyle(.segmented)
-			
+
 			List {
 				Text("A List Item")
 				Text("A List Item")
@@ -24,12 +24,12 @@ struct TodoListView: View {
 						print(UUID().uuidString)
 					}
 				Text("A third a")
-				
+
 			}
-			
+
 		}
 		.padding()
-		
+
 	}
 }
 
