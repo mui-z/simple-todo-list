@@ -35,6 +35,9 @@ struct TodoListView: View {
 			}
 		}
 		.padding()
+		.sheet(isPresented: $viewModel.binding.isShownModal) {
+			
+		}
 		
 	}
 }
