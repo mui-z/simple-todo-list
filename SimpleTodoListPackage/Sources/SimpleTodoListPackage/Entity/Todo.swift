@@ -17,7 +17,7 @@ struct Todo: Equatable, Identifiable {
 		self.title = title
 		self.isDone = isDone
 	}
-	
+
 	init(id: String, title: String, isDone: Bool) {
 		self.id = id
 		self.title = title

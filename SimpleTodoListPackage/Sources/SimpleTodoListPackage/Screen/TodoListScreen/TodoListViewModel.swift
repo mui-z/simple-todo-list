@@ -15,9 +15,9 @@ final class TodoListViewModel: NSObject, ObservableObject, Storable {
 	let input: Input
 	let output: Output
 	@ObservedObject var binding: Binding
-	
+
 	let repository: TodoRepositoryProtocol
-	
+
 	init(
 		input: Input = .init(),
 		output: Output = .init(),
@@ -35,11 +35,11 @@ final class TodoListViewModel: NSObject, ObservableObject, Storable {
 
 // MARK: - Property
 extension TodoListViewModel {
-	
+
 	final class Input {
 		let didTapTodo: PassthroughSubject<Todo, Never>
 		let didCloseModal: PassthroughSubject<Void, Never>
-		
+
 		init(
 			didTapTodo: PassthroughSubject<Todo, Never> = .init(),
 			didCloseModal: PassthroughSubject<Void, Never> = .init()
@@ -48,12 +48,12 @@ extension TodoListViewModel {
 			self.didCloseModal = didCloseModal
 		}
 	}
-	
+
 	final class Output: ObservableObject {
 		var modalModel: Todo?
 		let dismissView: PassthroughSubject<Void, Never>
 		let todoList: CurrentValueSubject<[Todo], Never>
-		
+
 		init(
 			modalModel: Todo? = nil,
 			dismissView: PassthroughSubject<Void, Never> = .init(),
@@ -64,7 +64,7 @@ extension TodoListViewModel {
 			self.todoList = todoList
 		}
 	}
-	
+
 	final class Binding: ObservableObject {
 		@Published var selectedTodoState: SelectedState = .list
 		@Published var isShownModal = false
@@ -79,21 +79,21 @@ private extension TodoListViewModel {
 				self?.objectWillChange.send()
 			}
 			.store(in: &cancellables)
-		
+
 		input.didTapTodo
 			.sink { todo in
 				binding.isShownModal = true
 				output.modalModel = todo
 			}
 			.store(in: &cancellables)
-		
+
 		input.didCloseModal
 			.sink {
 				binding.isShownModal = false
 				output.modalModel = nil
 			}
 			.store(in: &cancellables)
-		
+
 		binding.$selectedTodoState
 			.sink { [unowned self] selectedState in
 				// FIXME: To use cache. High load if you access the persistence layer every time
@@ -102,7 +102,7 @@ private extension TodoListViewModel {
 			}
 			.store(in: &cancellables)
 	}
-	
+
 	private func filterTodoList(todo: Todo, selectedState: SelectedState) -> Bool {
 		switch selectedState {
 		case .list:

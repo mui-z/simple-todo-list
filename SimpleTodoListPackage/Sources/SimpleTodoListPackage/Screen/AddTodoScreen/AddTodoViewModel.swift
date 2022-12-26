@@ -15,9 +15,9 @@ final class AddTodoViewModel: NSObject, ObservableObject, Storable {
 	let input: Input
 	let output: Output
 	@ObservedObject var binding: Binding
-	
+
 	let repository: TodoRepositoryProtocol
-	
+
 	init(
 		input: Input = .init(),
 		output: Output = .init(),
@@ -37,20 +37,20 @@ final class AddTodoViewModel: NSObject, ObservableObject, Storable {
 extension AddTodoViewModel {
 	final class Input {
 		let didTapRegister: PassthroughSubject<Void, Never>
-		
+
 		init(didTapRegister: PassthroughSubject<Void, Never> = .init()) {
 			self.didTapRegister = didTapRegister
 		}
 	}
-	
+
 	final class Output: ObservableObject {
 		let dismissView: PassthroughSubject<Void, Never>
-		
+
 		init(dismissView: PassthroughSubject<Void, Never> = .init()) {
 			self.dismissView = dismissView
 		}
 	}
-	
+
 	final class Binding: ObservableObject {
 		@State var todoTitleText: String = ""
 	}
@@ -64,7 +64,7 @@ private extension AddTodoViewModel {
 				self?.objectWillChange.send()
 			}
 			.store(in: &cancellables)
-	
+
 		input.didTapRegister
 			.sink { [unowned self] _ in
 				repository.create(todo: Todo(title: binding.todoTitleText))

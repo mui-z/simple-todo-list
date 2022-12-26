@@ -11,26 +11,26 @@ import LoggerAPI
 
 public struct ContentView: View {
 
-    public init() {
+	public init() {
 		HeliumLogger.use()
 	}
 
-    public var body: some View {
+	public var body: some View {
 		NavigationStack {
 			TodoListView(viewModel: .init(), environment: .init())
-			.toolbar {
-				Button {
-					print("add button pressed!")
-				} label: {
-					Image(systemName: "plus")
+				.toolbar {
+					Button {
+						print("add button pressed!")
+					} label: {
+						Image(systemName: "plus")
+					}
 				}
-			}
 		}
-    }
+	}
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+	static var previews: some View {
+		ContentView()
+	}
 }

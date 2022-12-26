@@ -47,18 +47,18 @@ final class TodoListTest: XCTestCase {
 		let viewModel = TodoListViewModel(repository: mockRepository)
 		let listedTodo = [Todo(title: "list")]
 		let doneListTodo = [Todo(title: "done", isDone: true)]
-		
+
 		expectation.expectedFulfillmentCount = 2
-		
+
 		mockRepository.getAllHandler = {
 			return listedTodo + doneListTodo
 		}
-		
+
 		XCTAssertEqual(viewModel.binding.selectedTodoState, .list)
 		XCTAssertEqual(viewModel.output.todoList.value, [])
 
 		viewModel.binding.selectedTodoState = .done
-		
+
 		viewModel.output.todoList
 			.first()
 			.sink { _ in
@@ -69,7 +69,7 @@ final class TodoListTest: XCTestCase {
 			.store(in: &cancellables)
 
 		viewModel.binding.selectedTodoState = .list
-		
+
 		viewModel.output.todoList
 			.first()
 			.sink { _ in
@@ -78,7 +78,7 @@ final class TodoListTest: XCTestCase {
 				expectation.fulfill()
 			}
 			.store(in: &cancellables)
-		
+
 		waitForExpectations(timeout: 1) { error in
 			if error == nil {
 				XCTAssertEqual(mockRepository.getAllCallCount, 3)
