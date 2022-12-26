@@ -9,7 +9,7 @@ import SwiftUI
 import HeliumLogger
 import LoggerAPI
 
-public struct ContentView: View {
+public struct RootView: View {
 
 	public init() {
 		HeliumLogger.use()
@@ -31,6 +31,6 @@ public struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
 	static var previews: some View {
-		ContentView()
+		RootView()
 	}
 }

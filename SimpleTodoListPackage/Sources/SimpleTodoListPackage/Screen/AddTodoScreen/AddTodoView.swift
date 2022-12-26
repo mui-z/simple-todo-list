@@ -22,10 +22,13 @@ struct AddTodoView: View {
 				.frame(height: 50)
 
 			Button("Register") {
-				environment.dismiss()
+				viewModel.input.didTapRegister.send(())
 			}
 
 			Spacer()
+		}
+		.onReceive(viewModel.output.dismissView) {
+			environment.dismiss()
 		}
     }
 }
