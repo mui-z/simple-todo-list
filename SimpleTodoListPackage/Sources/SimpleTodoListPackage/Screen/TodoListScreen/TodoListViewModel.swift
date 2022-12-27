@@ -101,13 +101,13 @@ private extension TodoListViewModel {
 				output.modalModel = nil
 			}
 			.store(in: &cancellables)
-		
+
 		input.didTapAddTodoButton
 			.sink { _ in
 				binding.isShownAddModal = true
 			}
 			.store(in: &cancellables)
-		
+
 		input.didDeleteTodo
 			.sink { [unowned self] index in
 				repository.delete(todo: output.todoList.value[index])

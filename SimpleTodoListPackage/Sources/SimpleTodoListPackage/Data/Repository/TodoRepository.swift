@@ -44,7 +44,7 @@ final class TodoRepository: TodoRepositoryProtocol {
 
 	func delete(todo: Todo) {
 		let realm = try! Realm()
-		try! realm.write{
+		try! realm.write {
 			let actualTodo: TodoData = realm.object(ofType: TodoData.self, forPrimaryKey: todo.id)!
 			realm.delete(actualTodo)
 		}

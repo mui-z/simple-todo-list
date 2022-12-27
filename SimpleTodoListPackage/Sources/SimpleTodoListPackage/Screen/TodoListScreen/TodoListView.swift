@@ -10,18 +10,18 @@ import SwiftUI
 struct TodoListView: View {
 	@ObservedObject var viewModel: TodoListViewModel
 	let environment: TodoListEnvironemnt
-	
+
 	var body: some View {
 		VStack {
 			Spacer()
 				.frame(height: 20.0)
-			
+
 			Picker(selection: $viewModel.binding.selectedTodoState, label: Text("Picker")) {
 				Text("Todo").tag(SelectedState.list)
 				Text("Done").tag(SelectedState.done)
 			}
 			.pickerStyle(.segmented)
-			
+
 			if viewModel.output.todoList.value.isEmpty {
 				Spacer()
 				Text("Nothing Todo!")
@@ -52,7 +52,7 @@ struct TodoListView: View {
 				Image(systemName: "plus")
 			}
 		}
-		
+
 	}
 }
 
