@@ -52,7 +52,7 @@ extension AddTodoViewModel {
 	}
 
 	final class Binding: ObservableObject {
-		@State var todoTitleText: String = ""
+		@Published var todoTitleText: String = ""
 	}
 }
 

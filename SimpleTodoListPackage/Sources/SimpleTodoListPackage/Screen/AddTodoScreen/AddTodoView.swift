@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct AddTodoView: View {
-	let viewModel: AddTodoViewModel
+	@ObservedObject var viewModel: AddTodoViewModel
 	let environment: AddTodoEnvironemnt
 
     var body: some View {
 		VStack {
 			Spacer()
-			TextField("Add todo", text: viewModel.binding.$todoTitleText)
+			TextField("Add todo", text: $viewModel.binding.todoTitleText)
 				.textFieldStyle(.roundedBorder)
 				.padding(.horizontal, 40)
 
