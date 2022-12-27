@@ -39,13 +39,16 @@ extension TodoListViewModel {
 	final class Input {
 		let didTapTodo: PassthroughSubject<Todo, Never>
 		let didCloseModal: PassthroughSubject<Void, Never>
+		let didTapAddTodoButton: PassthroughSubject<Void, Never>
 
 		init(
 			didTapTodo: PassthroughSubject<Todo, Never> = .init(),
-			didCloseModal: PassthroughSubject<Void, Never> = .init()
+			didCloseModal: PassthroughSubject<Void, Never> = .init(),
+			didTapAddTodoButton: PassthroughSubject<Void, Never> = .init()
 		) {
 			self.didTapTodo = didTapTodo
 			self.didCloseModal = didCloseModal
+			self.didTapAddTodoButton = didTapAddTodoButton
 		}
 	}
 
@@ -67,7 +70,8 @@ extension TodoListViewModel {
 
 	final class Binding: ObservableObject {
 		@Published var selectedTodoState: SelectedState = .list
-		@Published var isShownModal = false
+		@Published var isShownEditModal = false
+		@Published var isShownAddModal = false
 	}
 }
 
@@ -82,14 +86,14 @@ private extension TodoListViewModel {
 
 		input.didTapTodo
 			.sink { todo in
-				binding.isShownModal = true
+				binding.isShownEditModal = true
 				output.modalModel = todo
 			}
 			.store(in: &cancellables)
 
 		input.didCloseModal
 			.sink {
-				binding.isShownModal = false
+				binding.isShownEditModal = false
 				output.modalModel = nil
 			}
 			.store(in: &cancellables)

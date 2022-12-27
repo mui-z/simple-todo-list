@@ -18,13 +18,6 @@ public struct RootView: View {
 	public var body: some View {
 		NavigationStack {
 			TodoListView(viewModel: .init(), environment: .init())
-				.toolbar {
-					Button {
-						print("add button pressed!")
-					} label: {
-						Image(systemName: "plus")
-					}
-				}
 		}
 	}
 }

@@ -16,12 +16,12 @@ final class TodoListTest: XCTestCase {
 		let todo = Todo(title: "todo")
 
 		XCTAssertNil(viewModel.output.modalModel)
-		XCTAssertFalse(viewModel.binding.isShownModal)
+		XCTAssertFalse(viewModel.binding.isShownEditModal)
 
 		viewModel.input.didTapTodo.send(todo)
 
 		XCTAssertEqual(viewModel.output.modalModel, todo)
-		XCTAssertTrue(viewModel.binding.isShownModal)
+		XCTAssertTrue(viewModel.binding.isShownEditModal)
 	}
 
 	func testDidCloseButton() {
@@ -30,15 +30,15 @@ final class TodoListTest: XCTestCase {
 		let todo = Todo(title: "todo")
 
 		viewModel.output.modalModel = todo
-		viewModel.binding.isShownModal = true
+		viewModel.binding.isShownEditModal = true
 
 		XCTAssertNotNil(viewModel.output.modalModel)
-		XCTAssertTrue(viewModel.binding.isShownModal)
+		XCTAssertTrue(viewModel.binding.isShownEditModal)
 
 		viewModel.input.didCloseModal.send(())
 
 		XCTAssertNil(viewModel.output.modalModel)
-		XCTAssertFalse(viewModel.binding.isShownModal)
+		XCTAssertFalse(viewModel.binding.isShownEditModal)
 	}
 
 	func testSelectListSegment() {
