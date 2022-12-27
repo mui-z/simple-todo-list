@@ -75,11 +75,12 @@ final class TodoListTest: XCTestCase {
 		}
 		
 		viewModel.output.todoList
-			.print()
+			.dropFirst()
 			.sink { todoList in
 				if isFirst {
-					XCTAssertEqual(todoList, [todo])
 					isFirst = false
+					XCTAssertEqual(todoList, [todo])
+					viewModel.input.didDeleteTodo.send(0)
 				} else {
 					XCTAssertEqual(todoList, [])
 				}
@@ -91,12 +92,10 @@ final class TodoListTest: XCTestCase {
 		// FIXME: add load input stream to ViewModel
 		viewModel.binding.selectedTodoState = .list
 		
-		viewModel.input.didDeleteTodo.send(todo)
-		
 		waitForExpectations(timeout: 1) { error in
 			if error == nil {
-				XCTAssertEqual(repository.createCallCount, 1)
-				XCTAssertEqual(repository.getAllCallCount, 2)
+				XCTAssertEqual(repository.deleteCallCount, 1)
+				XCTAssertEqual(repository.getAllCallCount, 3)
 			} else {
 				XCTFail()
 			}
