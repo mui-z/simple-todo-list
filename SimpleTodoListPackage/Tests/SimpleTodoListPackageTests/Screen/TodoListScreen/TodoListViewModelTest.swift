@@ -24,7 +24,7 @@ final class TodoListTest: XCTestCase {
 		XCTAssertTrue(viewModel.binding.isShownEditModal)
 	}
 
-	func testDidCloseButton() {
+	func testDidCloseButton_showEditModal() {
 		let viewModel = TodoListViewModel(repository: TodoRepositoryProtocolMock())
 
 		let todo = Todo(title: "todo")
@@ -39,6 +39,26 @@ final class TodoListTest: XCTestCase {
 
 		XCTAssertNil(viewModel.output.modalModel)
 		XCTAssertFalse(viewModel.binding.isShownEditModal)
+	}
+	
+	func testDidCloseButton_showAddTodoModal() {
+		let viewModel = TodoListViewModel(repository: TodoRepositoryProtocolMock())
+
+		viewModel.binding.isShownAddModal = true
+
+		XCTAssertTrue(viewModel.binding.isShownAddModal)
+
+		viewModel.input.didCloseModal.send(())
+
+		XCTAssertFalse(viewModel.binding.isShownAddModal)
+	}
+	
+	func testDidTapAddTodoButton() {
+		let viewModel = TodoListViewModel(repository: TodoRepositoryProtocolMock())
+		
+		viewModel.input.didTapAddTodoButton.send(())
+		
+		XCTAssertTrue(viewModel.binding.isShownAddModal)
 	}
 
 	func testSelectListSegment() {

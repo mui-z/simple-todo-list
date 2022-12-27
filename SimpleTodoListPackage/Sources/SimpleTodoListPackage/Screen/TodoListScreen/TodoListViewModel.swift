@@ -94,7 +94,14 @@ private extension TodoListViewModel {
 		input.didCloseModal
 			.sink {
 				binding.isShownEditModal = false
+				binding.isShownAddModal = false
 				output.modalModel = nil
+			}
+			.store(in: &cancellables)
+		
+		input.didTapAddTodoButton
+			.sink { _ in
+				binding.isShownAddModal = true
 			}
 			.store(in: &cancellables)
 
