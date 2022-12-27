@@ -60,6 +60,49 @@ final class TodoListTest: XCTestCase {
 		
 		XCTAssertTrue(viewModel.binding.isShownAddModal)
 	}
+	
+	func testDidDeleteTodo() {
+		let repository = TodoRepositoryProtocolMock()
+		let viewModel = TodoListViewModel(repository: repository)
+		let expectation = expectation(description: "expectaiton")
+		let todo: Todo = Todo(title: "test")
+		var isFirst = true
+		
+		expectation.expectedFulfillmentCount = 2
+		
+		repository.getAllHandler = {
+			return isFirst ? [todo] : []
+		}
+		
+		viewModel.output.todoList
+			.print()
+			.sink { todoList in
+				if isFirst {
+					XCTAssertEqual(todoList, [todo])
+					isFirst = false
+				} else {
+					XCTAssertEqual(todoList, [])
+				}
+				
+				expectation.fulfill()
+			}
+			.store(in: &cancellables)
+		
+		// FIXME: add load input stream to ViewModel
+		viewModel.binding.selectedTodoState = .list
+		
+		viewModel.input.didDeleteTodo.send(todo)
+		
+		waitForExpectations(timeout: 1) { error in
+			if error == nil {
+				XCTAssertEqual(repository.createCallCount, 1)
+				XCTAssertEqual(repository.getAllCallCount, 2)
+			} else {
+				XCTFail()
+			}
+		}
+		
+	}
 
 	func testSelectListSegment() {
 		let mockRepository = TodoRepositoryProtocolMock()

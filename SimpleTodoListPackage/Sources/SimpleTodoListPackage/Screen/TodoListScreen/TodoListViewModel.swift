@@ -40,15 +40,18 @@ extension TodoListViewModel {
 		let didTapTodo: PassthroughSubject<Todo, Never>
 		let didCloseModal: PassthroughSubject<Void, Never>
 		let didTapAddTodoButton: PassthroughSubject<Void, Never>
+		let didDeleteTodo: PassthroughSubject<Int, Never>
 
 		init(
 			didTapTodo: PassthroughSubject<Todo, Never> = .init(),
 			didCloseModal: PassthroughSubject<Void, Never> = .init(),
-			didTapAddTodoButton: PassthroughSubject<Void, Never> = .init()
+			didTapAddTodoButton: PassthroughSubject<Void, Never> = .init(),
+			didDeleteTodo: PassthroughSubject<Int, Never> = .init()
 		) {
 			self.didTapTodo = didTapTodo
 			self.didCloseModal = didCloseModal
 			self.didTapAddTodoButton = didTapAddTodoButton
+			self.didDeleteTodo = didDeleteTodo
 		}
 	}
 
@@ -102,6 +105,13 @@ private extension TodoListViewModel {
 		input.didTapAddTodoButton
 			.sink { _ in
 				binding.isShownAddModal = true
+			}
+			.store(in: &cancellables)
+		
+		input.didDeleteTodo
+			.sink { [unowned self] index in
+				repository.delete(todo: output.todoList.value[index])
+				output.todoList.send(repository.getAll())
 			}
 			.store(in: &cancellables)
 

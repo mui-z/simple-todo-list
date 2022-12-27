@@ -31,6 +31,11 @@ struct TodoListView: View {
 					ForEach(viewModel.output.todoList.value, id: \.id) { todo in
 						Text(todo.title)
 					}
+					.onDelete { indexSet in
+						if let index = indexSet.first {
+							viewModel.input.didDeleteTodo.send(index)
+						}
+					}
 				}
 			}
 		}
