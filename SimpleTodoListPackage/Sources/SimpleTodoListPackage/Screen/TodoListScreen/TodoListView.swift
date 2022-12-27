@@ -35,11 +35,14 @@ struct TodoListView: View {
 			}
 		}
 		.padding()
-		.sheet(isPresented: $viewModel.binding.isShownEditModal) {
-			
-		}
+		.sheet(isPresented: $viewModel.binding.isShownAddModal, onDismiss: {
+			viewModel.input.didCloseModal.send(())
+		}, content: {
+			AddTodoView(viewModel: .init(), environment: .init())
+		})
 		.toolbar {
 			Button {
+				viewModel.input.didTapAddTodoButton.send(())
 			} label: {
 				Image(systemName: "plus")
 			}
