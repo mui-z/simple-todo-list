@@ -36,12 +36,7 @@ struct TodoListView: View {
 						}
 						.contentShape(Rectangle())
 						.onTapGesture {
-							print("on tapped \(todo.title)")
-						}
-					}
-					.onDelete { indexSet in
-						if let index = indexSet.first {
-							viewModel.input.didDeleteTodo.send(index)
+							viewModel.input.didTapTodoCell.send(todo)
 						}
 					}
 				}
@@ -53,6 +48,27 @@ struct TodoListView: View {
 		}, content: {
 			AddTodoView(viewModel: .init(), environment: .init())
 		})
+		.confirmationDialog(
+			"Menu",
+			isPresented: $viewModel.binding.isShownActionSheet,
+			presenting: viewModel.output.modalModel,
+			actions: { targetTodo in
+				if viewModel.binding.selectedTodoState == .list {
+					Button("Done"){
+						viewModel.input.didTapDoneButton.send(targetTodo)
+					}
+				}
+				Button("Delete", role: .destructive){
+					viewModel.input.didTapDeleteButton.send(targetTodo)
+				}
+				Button("Cancel", role: .cancel) {
+					viewModel.binding.isShownActionSheet = false
+				}
+			},
+			message: { targetTodo in
+				Text("edit todo.")
+			}
+		)
 		.toolbar {
 			Button {
 				viewModel.input.didTapAddTodoButton.send(())

@@ -16,15 +16,15 @@ final class TodoListTest: XCTestCase {
 		let todo = Todo(title: "todo")
 
 		XCTAssertNil(viewModel.output.modalModel)
-		XCTAssertFalse(viewModel.binding.isShownEditModal)
+		XCTAssertFalse(viewModel.binding.isShownActionSheet)
 
 		viewModel.input.didTapTodoCell.send(todo)
 
 		XCTAssertEqual(viewModel.output.modalModel, todo)
-		XCTAssertTrue(viewModel.binding.isShownEditModal)
+		XCTAssertTrue(viewModel.binding.isShownActionSheet)
 	}
 
-	func testDidCloseButton_showEditModal() {
+	func testDidClose_showEditModal() {
 		let repository = TodoRepositoryProtocolMock()
 		let viewModel = TodoListViewModel(repository: repository)
 
@@ -43,7 +43,7 @@ final class TodoListTest: XCTestCase {
 		XCTAssertEqual(repository.getAllCallCount, 2)
 	}
 
-	func testDidCloseButton_showAddTodoModal() {
+	func testDidClose_showAddTodoModal() {
 		let repository = TodoRepositoryProtocolMock()
 		let viewModel = TodoListViewModel(repository: repository)
 
@@ -55,6 +55,17 @@ final class TodoListTest: XCTestCase {
 
 		XCTAssertFalse(viewModel.binding.isShownAddModal)
 		XCTAssertEqual(repository.getAllCallCount, 2)
+	}
+	
+	func testDidTapDoneButton() {
+		let repository = TodoRepositoryProtocolMock()
+		let viewModel = TodoListViewModel(repository: repository)
+		let todo = Todo(title: "test")
+		
+		viewModel.input.didTapDoneButton.send(todo)
+		
+		XCTAssertEqual(repository.getAllCallCount, 2)
+		XCTAssertEqual(repository.updateCallCount, 1)
 	}
 
 	func testDidTapAddTodoButton() {
@@ -85,7 +96,7 @@ final class TodoListTest: XCTestCase {
 				if isFirst {
 					isFirst = false
 					XCTAssertEqual(todoList, [todo])
-					viewModel.input.didDeleteTodo.send(0)
+					viewModel.input.didTapDeleteButton.send(todo)
 				} else {
 					XCTAssertEqual(todoList, [])
 				}

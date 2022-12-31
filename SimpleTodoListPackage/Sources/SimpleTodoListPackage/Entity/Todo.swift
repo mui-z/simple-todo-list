@@ -10,7 +10,7 @@ import Foundation
 struct Todo: Equatable, Identifiable {
 	let id: String
 	let title: String
-	let isDone: Bool
+	var isDone: Bool
 
 	init(title: String, isDone: Bool = false) {
 		self.id = UUID().uuidString
@@ -22,5 +22,11 @@ struct Todo: Equatable, Identifiable {
 		self.id = id
 		self.title = title
 		self.isDone = isDone
+	}
+}
+
+extension Todo {
+	mutating func changeToDone() {
+		self.isDone = true
 	}
 }

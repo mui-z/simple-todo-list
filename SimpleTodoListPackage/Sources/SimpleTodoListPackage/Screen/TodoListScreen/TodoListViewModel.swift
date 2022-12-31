@@ -15,9 +15,9 @@ final class TodoListViewModel: NSObject, ObservableObject, Storable {
 	let input: Input
 	let output: Output
 	@ObservedObject var binding: Binding
-
+	
 	let repository: TodoRepositoryProtocol
-
+	
 	init(
 		input: Input = .init(),
 		output: Output = .init(),
@@ -35,31 +35,34 @@ final class TodoListViewModel: NSObject, ObservableObject, Storable {
 
 // MARK: - Property
 extension TodoListViewModel {
-
+	
 	final class Input {
 		let didTapTodoCell: PassthroughSubject<Todo, Never>
 		let didCloseModal: PassthroughSubject<Void, Never>
+		let didTapDoneButton: PassthroughSubject<Todo, Never>
 		let didTapAddTodoButton: PassthroughSubject<Void, Never>
-		let didDeleteTodo: PassthroughSubject<Int, Never>
-
+		let didTapDeleteButton: PassthroughSubject<Todo, Never>
+		
 		init(
 			didTapTodoCell: PassthroughSubject<Todo, Never> = .init(),
 			didCloseModal: PassthroughSubject<Void, Never> = .init(),
+			didTapDoneButton: PassthroughSubject<Todo, Never> = .init(),
 			didTapAddTodoButton: PassthroughSubject<Void, Never> = .init(),
-			didDeleteTodo: PassthroughSubject<Int, Never> = .init()
+			didDeleteTodo: PassthroughSubject<Todo, Never> = .init()
 		) {
 			self.didTapTodoCell = didTapTodoCell
 			self.didCloseModal = didCloseModal
+			self.didTapDoneButton = didTapDoneButton
 			self.didTapAddTodoButton = didTapAddTodoButton
-			self.didDeleteTodo = didDeleteTodo
+			self.didTapDeleteButton = didDeleteTodo
 		}
 	}
-
+	
 	final class Output: ObservableObject {
 		var modalModel: Todo?
 		let dismissView: PassthroughSubject<Void, Never>
 		let todoList: CurrentValueSubject<[Todo], Never>
-
+		
 		init(
 			modalModel: Todo? = nil,
 			dismissView: PassthroughSubject<Void, Never> = .init(),
@@ -70,11 +73,12 @@ extension TodoListViewModel {
 			self.todoList = todoList
 		}
 	}
-
+	
 	final class Binding: ObservableObject {
 		@Published var selectedTodoState: SelectedTodoState = .list
 		@Published var isShownEditModal = false
 		@Published var isShownAddModal = false
+		@Published var isShownActionSheet = false
 	}
 }
 
@@ -86,14 +90,14 @@ private extension TodoListViewModel {
 				self?.objectWillChange.send()
 			}
 			.store(in: &cancellables)
-
+		
 		input.didTapTodoCell
 			.sink { todo in
-				binding.isShownEditModal = true
+				binding.isShownActionSheet = true
 				output.modalModel = todo
 			}
 			.store(in: &cancellables)
-
+		
 		input.didCloseModal
 			.sink { [unowned self] _ in
 				binding.isShownEditModal = false
@@ -103,20 +107,31 @@ private extension TodoListViewModel {
 				output.todoList.send(filteredTodoList)
 			}
 			.store(in: &cancellables)
-
+		
+		input.didTapDoneButton
+			.sink { [unowned self] todo in
+				let updatedTodo = Todo(id: todo.id, title: todo.title, isDone: true)
+				self.repository.update(todo: updatedTodo)
+				let filteredTodoList = repository.getAll().filter { filterTodoList(todo: $0, selectedState: binding.selectedTodoState) }
+				output.todoList.send(filteredTodoList)
+			}
+			.store(in: &cancellables)
+		
 		input.didTapAddTodoButton
 			.sink { _ in
 				binding.isShownAddModal = true
 			}
 			.store(in: &cancellables)
-
-		input.didDeleteTodo
-			.sink { [unowned self] index in
-				repository.delete(todo: output.todoList.value[index])
-				output.todoList.send(repository.getAll())
+		
+		input.didTapDeleteButton
+			.sink { [unowned self] todo in
+				repository.delete(todo: todo)
+				let filteredTodoList = repository.getAll().filter { filterTodoList(todo: $0, selectedState: binding.selectedTodoState) }
+				print(binding.selectedTodoState)
+				output.todoList.send(filteredTodoList)
 			}
 			.store(in: &cancellables)
-
+		
 		binding.$selectedTodoState
 			.sink { [unowned self] selectedState in
 				// FIXME: To use cache. High load if you access the persistence layer every time
@@ -134,6 +149,8 @@ private extension TodoListViewModel {
 			return todo.isDone
 		}
 	}
+	
+	
 }
 
 enum SelectedTodoState {
