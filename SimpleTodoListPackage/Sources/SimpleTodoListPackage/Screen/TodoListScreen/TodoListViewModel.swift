@@ -130,7 +130,6 @@ private extension TodoListViewModel {
 		
 		binding.$selectedTodoState
 			.sink { [unowned self] selectedState in
-				// FIXME: To use cache. High load if you access the persistence layer every time
 				output.todoList.send(getFilteredTodoList(selectedTodoState: selectedState))
 			}
 			.store(in: &cancellables)
