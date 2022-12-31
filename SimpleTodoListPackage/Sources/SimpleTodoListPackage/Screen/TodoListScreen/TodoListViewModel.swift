@@ -103,8 +103,7 @@ private extension TodoListViewModel {
 				binding.isShownEditModal = false
 				binding.isShownAddModal = false
 				output.modalModel = nil
-				let filteredTodoList = repository.getAll().filter { filterTodoList(todo: $0, selectedState: binding.selectedTodoState) }
-				output.todoList.send(filteredTodoList)
+				output.todoList.send(getFilteredTodoList(selectedTodoState: binding.selectedTodoState))
 			}
 			.store(in: &cancellables)
 		
@@ -112,8 +111,7 @@ private extension TodoListViewModel {
 			.sink { [unowned self] todo in
 				let updatedTodo = Todo(id: todo.id, title: todo.title, isDone: true)
 				self.repository.update(todo: updatedTodo)
-				let filteredTodoList = repository.getAll().filter { filterTodoList(todo: $0, selectedState: binding.selectedTodoState) }
-				output.todoList.send(filteredTodoList)
+				output.todoList.send(getFilteredTodoList(selectedTodoState: binding.selectedTodoState))
 			}
 			.store(in: &cancellables)
 		
@@ -126,17 +124,14 @@ private extension TodoListViewModel {
 		input.didTapDeleteButton
 			.sink { [unowned self] todo in
 				repository.delete(todo: todo)
-				let filteredTodoList = repository.getAll().filter { filterTodoList(todo: $0, selectedState: binding.selectedTodoState) }
-				print(binding.selectedTodoState)
-				output.todoList.send(filteredTodoList)
+				output.todoList.send(getFilteredTodoList(selectedTodoState: binding.selectedTodoState))
 			}
 			.store(in: &cancellables)
 		
 		binding.$selectedTodoState
 			.sink { [unowned self] selectedState in
 				// FIXME: To use cache. High load if you access the persistence layer every time
-				let filteredTodoList = repository.getAll().filter { filterTodoList(todo: $0, selectedState: selectedState) }
-				output.todoList.send(filteredTodoList)
+				output.todoList.send(getFilteredTodoList(selectedTodoState: selectedState))
 			}
 			.store(in: &cancellables)
 	}
@@ -150,7 +145,10 @@ private extension TodoListViewModel {
 		}
 	}
 	
-	
+	private func getFilteredTodoList(selectedTodoState: SelectedTodoState) -> [Todo] {
+		repository.getAll()
+			.filter { filterTodoList(todo: $0, selectedState: selectedTodoState) }
+	}
 }
 
 enum SelectedTodoState {
