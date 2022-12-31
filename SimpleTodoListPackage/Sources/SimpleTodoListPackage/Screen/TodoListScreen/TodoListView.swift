@@ -29,7 +29,15 @@ struct TodoListView: View {
 			} else {
 				List {
 					ForEach(viewModel.output.todoList.value, id: \.id) { todo in
-						Text(todo.title)
+						HStack {
+							Text(todo.title)
+								.padding(.horizontal)
+							Spacer()
+						}
+						.contentShape(Rectangle())
+						.onTapGesture {
+							print("on tapped \(todo.title)")
+						}
 					}
 					.onDelete { indexSet in
 						if let index = indexSet.first {
