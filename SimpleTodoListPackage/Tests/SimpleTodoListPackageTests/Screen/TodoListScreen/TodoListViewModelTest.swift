@@ -24,25 +24,6 @@ final class TodoListTest: XCTestCase {
 		XCTAssertTrue(viewModel.binding.isShownActionSheet)
 	}
 
-	func testDidClose_showEditModal() {
-		let repository = TodoRepositoryProtocolMock()
-		let viewModel = TodoListViewModel(repository: repository)
-
-		let todo = Todo(title: "todo")
-
-		viewModel.output.modalModel = todo
-		viewModel.binding.isShownEditModal = true
-
-		XCTAssertNotNil(viewModel.output.modalModel)
-		XCTAssertTrue(viewModel.binding.isShownEditModal)
-
-		viewModel.input.didCloseModal.send(())
-
-		XCTAssertNil(viewModel.output.modalModel)
-		XCTAssertFalse(viewModel.binding.isShownEditModal)
-		XCTAssertEqual(repository.getAllCallCount, 2)
-	}
-
 	func testDidClose_showAddTodoModal() {
 		let repository = TodoRepositoryProtocolMock()
 		let viewModel = TodoListViewModel(repository: repository)

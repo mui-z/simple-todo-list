@@ -76,7 +76,6 @@ extension TodoListViewModel {
 	
 	final class Binding: ObservableObject {
 		@Published var selectedTodoState: SelectedTodoState = .list
-		@Published var isShownEditModal = false
 		@Published var isShownAddModal = false
 		@Published var isShownActionSheet = false
 	}
@@ -100,7 +99,7 @@ private extension TodoListViewModel {
 		
 		input.didCloseModal
 			.sink { [unowned self] _ in
-				binding.isShownEditModal = false
+				binding.isShownActionSheet = false
 				binding.isShownAddModal = false
 				output.modalModel = nil
 				output.todoList.send(getFilteredTodoList(selectedTodoState: binding.selectedTodoState))
