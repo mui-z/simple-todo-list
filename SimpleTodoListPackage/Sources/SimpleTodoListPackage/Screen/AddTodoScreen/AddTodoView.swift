@@ -24,6 +24,7 @@ struct AddTodoView: View {
 			Button("Register") {
 				viewModel.input.didTapRegister.send(())
 			}
+			.disabled(!viewModel.output.isEnabledRegisterButton.value)
 
 			Spacer()
 		}
