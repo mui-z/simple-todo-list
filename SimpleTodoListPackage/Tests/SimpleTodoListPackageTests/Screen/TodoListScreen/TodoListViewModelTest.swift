@@ -71,11 +71,12 @@ final class TodoListTest: XCTestCase {
 		expectation.expectedFulfillmentCount = 2
 
 		repository.getAllHandler = {
-			return isFirst ? [todo] : []
+			return []
 		}
+		
+		viewModel.output.todoList.send([todo])
 
 		viewModel.output.todoList
-			.dropFirst()
 			.sink { todoList in
 				if isFirst {
 					isFirst = false
@@ -88,14 +89,11 @@ final class TodoListTest: XCTestCase {
 				expectation.fulfill()
 			}
 			.store(in: &cancellables)
-
-		// FIXME: add load input stream to ViewModel
-		viewModel.binding.selectedTodoState = .list
-
+		
 		waitForExpectations(timeout: 1) { error in
 			if error == nil {
 				XCTAssertEqual(repository.deleteCallCount, 1)
-				XCTAssertEqual(repository.getAllCallCount, 3)
+				XCTAssertEqual(repository.getAllCallCount, 2)
 			} else {
 				XCTFail()
 			}
