@@ -72,7 +72,7 @@ extension TodoListViewModel {
 	}
 
 	final class Binding: ObservableObject {
-		@Published var selectedTodoState: SelectedState = .list
+		@Published var selectedTodoState: SelectedTodoState = .list
 		@Published var isShownEditModal = false
 		@Published var isShownAddModal = false
 	}
@@ -126,7 +126,7 @@ private extension TodoListViewModel {
 			.store(in: &cancellables)
 	}
 	
-	private func filterTodoList(todo: Todo, selectedState: SelectedState) -> Bool {
+	private func filterTodoList(todo: Todo, selectedState: SelectedTodoState) -> Bool {
 		switch selectedState {
 		case .list:
 			return !todo.isDone
@@ -136,7 +136,7 @@ private extension TodoListViewModel {
 	}
 }
 
-enum SelectedState {
+enum SelectedTodoState {
 	case list
 	case done
 }

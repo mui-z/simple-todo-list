@@ -17,8 +17,8 @@ struct TodoListView: View {
 				.frame(height: 20.0)
 
 			Picker(selection: $viewModel.binding.selectedTodoState, label: Text("Picker")) {
-				Text("Todo").tag(SelectedState.list)
-				Text("Done").tag(SelectedState.done)
+				Text("Todo").tag(SelectedTodoState.list)
+				Text("Done").tag(SelectedTodoState.done)
 			}
 			.pickerStyle(.segmented)
 
