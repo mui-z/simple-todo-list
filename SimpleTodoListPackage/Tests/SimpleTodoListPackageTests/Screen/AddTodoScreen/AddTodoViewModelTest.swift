@@ -31,6 +31,18 @@ final class AddTodoViewModelTest: XCTestCase, Storable {
 				XCTFail()
 			}
 		}
-
+	}
+	
+	func testIsEnabledRegisterButton() {
+		let mockRepository = TodoRepositoryProtocolMock()
+		let viewModel = AddTodoViewModel(repository: mockRepository)
+		
+		XCTAssertEqual(viewModel.output.isEnabledRegisterButton.value, false)
+		
+		viewModel.binding.todoTitleText = "input"
+		XCTAssertEqual(viewModel.output.isEnabledRegisterButton.value, true)
+		
+		viewModel.binding.todoTitleText = ""
+		XCTAssertEqual(viewModel.output.isEnabledRegisterButton.value, false)
 	}
 }

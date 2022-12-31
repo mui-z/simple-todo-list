@@ -45,9 +45,14 @@ extension AddTodoViewModel {
 
 	final class Output: ObservableObject {
 		let dismissView: PassthroughSubject<Void, Never>
+		let isEnabledRegisterButton: CurrentValueSubject<Bool, Never>
 
-		init(dismissView: PassthroughSubject<Void, Never> = .init()) {
+		init(
+			dismissView: PassthroughSubject<Void, Never> = .init(),
+			isRegisterButtonEnabled: CurrentValueSubject<Bool, Never> = .init(false)
+		) {
 			self.dismissView = dismissView
+			self.isEnabledRegisterButton = isRegisterButtonEnabled
 		}
 	}
 
@@ -69,6 +74,12 @@ private extension AddTodoViewModel {
 			.sink { [unowned self] _ in
 				repository.create(todo: Todo(title: binding.todoTitleText))
 				output.dismissView.send(())
+			}
+			.store(in: &cancellables)
+		
+		binding.$todoTitleText
+			.sink { text in
+				output.isEnabledRegisterButton.send(text.isEmpty == false)
 			}
 			.store(in: &cancellables)
 	}

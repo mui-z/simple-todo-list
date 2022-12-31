@@ -40,7 +40,7 @@ final class TodoListTest: XCTestCase {
 
 		XCTAssertNil(viewModel.output.modalModel)
 		XCTAssertFalse(viewModel.binding.isShownEditModal)
-		XCTAssertEqual(repository.getAllCallCount, 1)
+		XCTAssertEqual(repository.getAllCallCount, 2)
 	}
 
 	func testDidCloseButton_showAddTodoModal() {
@@ -54,7 +54,7 @@ final class TodoListTest: XCTestCase {
 		viewModel.input.didCloseModal.send(())
 
 		XCTAssertFalse(viewModel.binding.isShownAddModal)
-		XCTAssertEqual(repository.getAllCallCount, 1)
+		XCTAssertEqual(repository.getAllCallCount, 2)
 	}
 
 	func testDidTapAddTodoButton() {
