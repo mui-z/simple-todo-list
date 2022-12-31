@@ -37,18 +37,18 @@ final class TodoListViewModel: NSObject, ObservableObject, Storable {
 extension TodoListViewModel {
 
 	final class Input {
-		let didTapTodo: PassthroughSubject<Todo, Never>
+		let didTapTodoCell: PassthroughSubject<Todo, Never>
 		let didCloseModal: PassthroughSubject<Void, Never>
 		let didTapAddTodoButton: PassthroughSubject<Void, Never>
 		let didDeleteTodo: PassthroughSubject<Int, Never>
 
 		init(
-			didTapTodo: PassthroughSubject<Todo, Never> = .init(),
+			didTapTodoCell: PassthroughSubject<Todo, Never> = .init(),
 			didCloseModal: PassthroughSubject<Void, Never> = .init(),
 			didTapAddTodoButton: PassthroughSubject<Void, Never> = .init(),
 			didDeleteTodo: PassthroughSubject<Int, Never> = .init()
 		) {
-			self.didTapTodo = didTapTodo
+			self.didTapTodoCell = didTapTodoCell
 			self.didCloseModal = didCloseModal
 			self.didTapAddTodoButton = didTapAddTodoButton
 			self.didDeleteTodo = didDeleteTodo
@@ -87,7 +87,7 @@ private extension TodoListViewModel {
 			}
 			.store(in: &cancellables)
 
-		input.didTapTodo
+		input.didTapTodoCell
 			.sink { todo in
 				binding.isShownEditModal = true
 				output.modalModel = todo

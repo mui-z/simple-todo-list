@@ -18,7 +18,7 @@ final class TodoListTest: XCTestCase {
 		XCTAssertNil(viewModel.output.modalModel)
 		XCTAssertFalse(viewModel.binding.isShownEditModal)
 
-		viewModel.input.didTapTodo.send(todo)
+		viewModel.input.didTapTodoCell.send(todo)
 
 		XCTAssertEqual(viewModel.output.modalModel, todo)
 		XCTAssertTrue(viewModel.binding.isShownEditModal)
