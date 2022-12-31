@@ -95,10 +95,12 @@ private extension TodoListViewModel {
 			.store(in: &cancellables)
 
 		input.didCloseModal
-			.sink {
+			.sink { [unowned self] _ in
 				binding.isShownEditModal = false
 				binding.isShownAddModal = false
 				output.modalModel = nil
+				let filteredTodoList = repository.getAll().filter { filterTodoList(todo: $0, selectedState: binding.selectedTodoState) }
+				output.todoList.send(filteredTodoList)
 			}
 			.store(in: &cancellables)
 
@@ -123,7 +125,7 @@ private extension TodoListViewModel {
 			}
 			.store(in: &cancellables)
 	}
-
+	
 	private func filterTodoList(todo: Todo, selectedState: SelectedState) -> Bool {
 		switch selectedState {
 		case .list:
